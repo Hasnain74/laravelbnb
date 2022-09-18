@@ -8,6 +8,7 @@ require('./bootstrap');
 
 import router from "./routes";
 import VueRouter from "vue-router";
+import Index from "./index";
 
 window.Vue = require('vue').default;
 
@@ -22,7 +23,9 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//This is global registration of the components
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('second-component', require('./components/Example2.vue').default);
 Vue.use(VueRouter);
 
 /**
@@ -34,4 +37,7 @@ Vue.use(VueRouter);
 const app = new Vue({
     el: '#app',
     router, //short hand for router: router
+    components: {
+        "index": Index
+    }
 });
